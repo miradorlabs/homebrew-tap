@@ -33,12 +33,14 @@ cask "mirador" do
 
   binary "mirador"
 
-  postflight do
-    # Downloaded binaries carry macOS's quarantine flag, which Gatekeeper blocks
-    # with an unhelpful "cannot be opened" until the attribute is cleared. Homebrew
-    # runs this after install so the first `mirador` works. Linux has no xattr
-    # binary, and system_command raises rather than returning non-zero when the
-    # executable is missing, so this must be a file check and not a probe.
+  preflight do
+    # Downloaded binaries carry macOS's quarantine flag, and Gatekeeper SIGKILLs a
+    # quarantined binary the moment anything executes it. That includes the completions
+    # generation below, which runs during the artifact phase — so this must be a
+    # preflight, not a postflight: strip the flag before the first execution, or the
+    # install itself dies. Linux has no xattr binary, and system_command raises rather
+    # than returning non-zero when the executable is missing, so this must be a file
+    # check and not a probe.
     if File.executable?("/usr/bin/xattr")
       system_command "/usr/bin/xattr",
                      args: ["-dr", "com.apple.quarantine", "#{staged_path}/mirador"],
