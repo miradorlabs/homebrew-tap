@@ -16,8 +16,37 @@ than installing from it.
 
 | | Install | What it is |
 |---|---|---|
+| **terma** | `brew install miradorlabs/tap/terma` | Connects coding agents (Claude Code, Codex, Cursor, OpenCode, Antigravity) to [Terma](https://terma.ai) and stamps the commits they produce, so agent spend can be traced to shipped code |
 | **mirador** | `brew install miradorlabs/tap/mirador` | Command-line client for the Mirador API — query traces, logs, metrics and dashboards, and manage them as files |
 | **hush** | `brew install miradorlabs/tap/hush` | `.env` files sealed to your Mac's Secure Enclave, gated by Touch ID |
+
+### terma
+
+A prebuilt, statically linked binary for macOS and Linux, on both Intel and Apple
+silicon. Released from
+[miradorlabs/terma-cli](https://github.com/miradorlabs/terma-cli), where
+`Casks/terma.rb` is written automatically by GoReleaser on each tagged release —
+edit it there, not here.
+
+The binary is ad-hoc signed rather than notarized, so the cask clears macOS's
+quarantine flag before installing it; without that, Gatekeeper would stop the first
+run. Every release archive carries signed build provenance, which you can check
+against the release workflow that produced it:
+
+```sh
+gh attestation verify terma_Darwin_arm64.tar.gz --owner miradorlabs
+```
+
+Shell completions for bash, zsh and fish are installed with it. Get started with:
+
+```sh
+terma setup      # once: sign in and choose your coding agents
+terma install    # in each repository you want tracked
+```
+
+`terma update --check` reports newer releases; on a Homebrew install, upgrade with
+`brew upgrade terma`. The CLI is also published as `install.sh` and on npm
+(`@miradorlabs/terma`) — see the [terma-cli README](https://github.com/miradorlabs/terma-cli#install).
 
 ### mirador
 
@@ -42,7 +71,7 @@ APIs. Released from [miradorlabs/hush](https://github.com/miradorlabs/hush).
 ## Layout
 
 ```
-Casks/      prebuilt binaries   (mirador)
+Casks/      prebuilt binaries   (terma, mirador)
 Formula/    built from source   (hush)
 ```
 
