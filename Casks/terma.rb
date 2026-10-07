@@ -7,25 +7,25 @@ cask "terma" do
     end
   end
 
-  version "0.2.1"
+  version "0.2.2"
 
   on_macos do
     on_arm do
-      sha256 "f5a942c55155c81ca057b86581ec3c52922ca9681fb90c6de25da75ff8f92366"
+      sha256 "aade46ebb24ee49bd6140d16f0430264a823a53148b57f0ee81ef02bc17eae71"
       url "https://github.com/miradorlabs/terma-cli/releases/download/v#{version}/terma_Darwin_arm64.tar.gz"
     end
     on_intel do
-      sha256 "7492db8e20f9b4cef269473463d3c9bcde5786919f205debd6e7bf7203a9d43f"
+      sha256 "92197864002ff9130a7a80b42023f4bb71bd140024527be09b6a77398586b816"
       url "https://github.com/miradorlabs/terma-cli/releases/download/v#{version}/terma_Darwin_x86_64.tar.gz"
     end
   end
   on_linux do
     on_arm do
-      sha256 "698a9afadb864507dbfe4b4d30ca1811729b4fc497dfdf382ddd6b33b9837f3c"
+      sha256 "193efebf82f7cb7c27b2b83743b9149582a827226a321cba079063ad86c0e4c2"
       url "https://github.com/miradorlabs/terma-cli/releases/download/v#{version}/terma_Linux_arm64.tar.gz"
     end
     on_intel do
-      sha256 "c36e85e7b5420e23e6933a758a0d75bf1f7af61fabb66ad08a3ba5c94b428731"
+      sha256 "78b27f62f4b6b82123edc7fc02aa641897bf89809f157933a3eded8a387763af"
       url "https://github.com/miradorlabs/terma-cli/releases/download/v#{version}/terma_Linux_x86_64.tar.gz"
     end
   end
@@ -43,4 +43,8 @@ cask "terma" do
   generate_completions_from_executable "terma", "completion"
 
   # No zap stanza required
+
+  caveats <<~EOS
+    Next: run `terma setup` in a terminal.
+  EOS
 end
