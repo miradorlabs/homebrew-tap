@@ -7,25 +7,25 @@ cask "terma" do
     end
   end
 
-  version "0.2.8"
+  version "0.2.9"
 
   on_macos do
     on_arm do
-      sha256 "10ce4b6a25ac2ee9289cc0bbbcfe1ccd310bbe26199f23385e815d49e155ae8d"
+      sha256 "f081ab7555464eaa568e5ae59bcc68bdaf9c15c797feb2d450c134cb6bf9c7d7"
       url "https://github.com/miradorlabs/terma-cli/releases/download/v#{version}/terma_Darwin_arm64.tar.gz"
     end
     on_intel do
-      sha256 "d49d09610970be6654770db5bbe5bb69f5a0c049004186ffbebf1664830cff65"
+      sha256 "1ca391941ae6bf21f0fbc696fa6ff92f2c82dcdd3c70bf84046fabaa2b769bcb"
       url "https://github.com/miradorlabs/terma-cli/releases/download/v#{version}/terma_Darwin_x86_64.tar.gz"
     end
   end
   on_linux do
     on_arm do
-      sha256 "f8fb852816ef80feec2e398f6e5ed8e80deb7676fb4e3bbd3b333177e307baee"
+      sha256 "0ae35dd09c0708c75afa1c52dbd8f785583ba150bd21c4914e61596254e8b275"
       url "https://github.com/miradorlabs/terma-cli/releases/download/v#{version}/terma_Linux_arm64.tar.gz"
     end
     on_intel do
-      sha256 "979c45e0db039bf1065ca58cd056e4e07e55fa7961ca04be2313108d3d7e4e34"
+      sha256 "5f02a878e087cf1d402c00bec109a1da36e9b6525ea62f6a20e023a41fdea402"
       url "https://github.com/miradorlabs/terma-cli/releases/download/v#{version}/terma_Linux_x86_64.tar.gz"
     end
   end
